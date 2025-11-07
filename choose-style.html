@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Choose Your Clothing Style</title>
+  <link href="https://fonts.googleapis.com/css2?family=Condiment&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2debb11fca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="choose-style.css">
+</head>
+<body>
+
+  <!-- Background Decorations -->
+  <div class="decor side-blob left"></div>
+  <div class="decor side-blob right"></div>
+  <div class="decor left-overlay"></div>
+  <div class="decor right-overlay"></div>
+  <div class="decor side-pattern"></div>
+  <div class="decor glow left"></div>
+  <div class="decor glow right"></div>
+
+  <!-- Header -->
+  <header class="top-bar">
+    <h1>Lebs<span class="highlight">U</span>p</h1>
+    <nav class="nav-right">
+      <a href="acceuil.html" title="Home"><i class="fa-solid fa-house"></i></a>
+      <a href="#" title="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+      <a href="#" title="Profile"><i class="fa-solid fa-user"></i></a>
+    </nav>
+  </header>
+
+  <!-- Guide Text -->
+  <section class="guide-text">
+    <h2 class="guide-title">Find Your Vibe</h2>
+    <p class="guide-subtitle">Choose your clothing style to build a wardrobe that matches your lifestyle.</p>
+  </section>
+
+  <!-- Clothing Styles Section -->
+  <main>
+    <section class="collections">
+      <div class="collection-box" data-style="Casual">
+        <img src="st1.jpg" alt="Casual">
+        <div class="collection-text">Casual</div>
+      </div>
+      <div class="collection-box" data-style="Formal">
+        <img src="st2.jpg" alt="Formal">
+        <div class="collection-text">Formal</div>
+      </div>
+      <div class="collection-box" data-style="Streetwear">
+        <img src="st3.jpg" alt="Streetwear">
+        <div class="collection-text">Streetwear</div>
+      </div>
+      <div class="collection-box" data-style="Vintage">
+        <img src="st4.jpg" alt="Vintage">
+        <div class="collection-text">Vintage</div>
+      </div>
+      <div class="collection-box" data-style="Athleisure">
+        <img src="st5.jpg" alt="Athleisure">
+        <div class="collection-text">Athleisure</div>
+      </div>
+      <div class="collection-box" data-style="Luxury">
+        <img src="st6.jpg" alt="Luxury">
+        <div class="collection-text">Luxury</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Select all style boxes
+    const boxes = document.querySelectorAll('.collection-box');
+
+    boxes.forEach(box => {
+      box.addEventListener('click', () => {
+        const chosenStyle = box.getAttribute('data-style');
+
+        // Save chosen style in localStorage
+        localStorage.setItem('chosenStyle', chosenStyle);
+
+        // Optional: link to current user
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const lastUser = users[users.length - 1]; // last signed-up user
+
+        if (lastUser) {
+          lastUser.style = chosenStyle; // attach style to user
+          users[users.length - 1] = lastUser; // update user list
+          localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        alert(`✅ You chose: ${chosenStyle}`);
+        window.location.href = "acceuil.html"; // redirect to acceuil
+      });
+    });
+  </script>
+</body>
+</html>

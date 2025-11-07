@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LebsUp Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Condiment&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2debb11fca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+  <!-- Headline -->
+  <h1 class="logo">Lebs<span class="highlight">U</span>p</h1>
+
+  <!-- Login Container -->
+  <div class="login-container">
+    <p class="login-title">Welcome Back</p>
+    <form class="login-form" id="loginForm">
+      <input type="text" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit" class="login-button">Login</button>
+    </form>
+
+    <p class="or">OR</p>
+
+    <div class="social-login">
+      <button class="social-btn instagram"><i class="fa-brands fa-instagram"></i> Login with Instagram</button>
+      <button class="social-btn facebook"><i class="fa-brands fa-facebook"></i> Login with Facebook</button>
+      <button class="social-btn icloud"><i class="fa-brands fa-apple"></i> Login with iCloud</button>
+    </div>
+
+    <p class="signup-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
+  </div>
+
+  <script>
+    const form = document.getElementById("loginForm");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const password = document.getElementById("password").value.trim();
+
+      // Get users from localStorage
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+
+      // Find user with matching email and password
+      const user = users.find(u => u.email === email && u.password === password);
+
+      if (user) {
+        alert("✅ Login successful! Welcome back, " + user.firstName + "!");
+        // Store current user in localStorage (optional)
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        // Redirect to home page
+        window.location.href = "acceuil.html";
+      } else {
+        alert("❌ Incorrect email or password. Please try again.");
+      }
+    });
+  </script>
+
+</body>
+</html>

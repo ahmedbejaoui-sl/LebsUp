@@ -1,0 +1,91 @@
+:root {
+  --primary-bg: linear-gradient(to bottom, #E0E0E0, #FFFFFF, #F5F5F0);
+  --headline-color: #333333;
+  --highlight-color: #C19A6B;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--primary-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+h1.logo {
+  font-family: "Condiment", cursive;
+  font-size: 3rem;
+  color: var(--headline-color);
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+}
+
+.highlight {
+  color: var(--highlight-color);
+}
+
+.signup-container {
+  background: rgba(255,255,255,0.85);
+  padding: 2rem 3rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  text-align: center;
+  width: 100%;
+  max-width: 450px;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.signup-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.signup-container input,
+.signup-container select {
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.signup-container input:focus,
+.signup-container select:focus {
+  outline: none;
+  border-color: var(--highlight-color);
+  background: #fafafa;
+}
+
+.signup-container button {
+  background: var(--highlight-color);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.signup-container button:hover {
+  background: #a97f55;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Decorative Circle */
+.decor {
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(200,200,200,0.2);
+  z-index: -1;
+}

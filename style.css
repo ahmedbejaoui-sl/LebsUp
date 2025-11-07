@@ -1,0 +1,312 @@
+:root {
+  --primary-bg: linear-gradient(to bottom, #E0E0E0, #FFFFFF, #F5F5F0);
+  --headline-color: #333333;
+  --highlight-color: #C19A6B;
+  --icon-color: #7A7A7A;
+  --glass-bg: rgba(0, 0, 0, 0.2);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--primary-bg);
+  overflow-x: hidden;
+}
+
+/* Headline */
+h1 {
+  font-family: "Condiment", cursive;
+  font-size: 3rem;
+  color: var(--headline-color);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.highlight {
+  color: var(--highlight-color);
+  font-weight: bold;
+}
+
+/* Header layout */
+.top-bar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: var(--primary-bg);
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  box-shadow: none;
+  border-bottom: none;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.review {
+  font-size: 1rem;
+  color: var(--headline-color);
+  cursor: pointer;
+}
+
+.nav-right i {
+  font-size: 1.5rem;
+  color: black;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.nav-right i:hover {
+  color: var(--highlight-color);
+  transform: scale(1.1);
+}
+
+.search-input {
+  height: 2rem;
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+}
+
+/* Content Boxes */
+.content-box {
+  position: relative;
+  border-radius: 1.5rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.photo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.text-overlay {
+  font-family: "Russo One", sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+
+  background: var(--glass-bg);
+  padding: 0.8rem 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text-overlay:hover {
+  background: rgba(0,0,0,0.35);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Collections */
+.collections {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.collection-box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.collection-box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+.collection-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection-text {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Reviews */
+.reviews {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.review-box {
+  width: 250px;
+  padding: 1rem;
+  background: rgba(0,0,0,0.05);
+  border-radius: 10px;
+  text-align: center;
+  font-style: italic;
+  color: #333;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Call to Action */
+.cta {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: rgba(200,200,200,0.05);
+  border-radius: 20px;
+  margin: 3rem auto;
+}
+
+/* Right Background Text */
+.right-bg-text {
+  position: absolute;
+  top: 150px;
+  right: 50px;
+  font-size: 10rem;
+  font-weight: bold;
+  color: rgba(0,0,0,0.03);
+  transform: rotate(-20deg);
+  z-index: 0;
+}
+
+/* Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.float {
+  animation: float 3s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+.side-button {
+  width: 200px;    /* was 300px */
+  height: 80px;   /* was 100px */
+  border-radius: 0.5rem;
+  border: solid;
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.side-button:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);  /* slightly stronger shadow */
+  transform: scale(1.05);                  /* smooth enlarge on hover */
+}
+.side-icon {
+  position: absolute;
+  font-size: 40px;       /* size of the icon */
+  color: rgba(0,0,0,0.15); /* subtle visibility */
+  z-index: 0;            /* behind main content */
+  pointer-events: none;  /* so icons don’t block clicks */
+}
+.side-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 25px 25px; /* distance between dots */
+  z-index: 0; /* behind everything */
+}
+@media screen and (max-width: 500px) {
+  .side-blob.left, .side-blob.right,
+  .bg-text, .side-icon {
+    display: none;   /* hide on very small phones */
+  }
+}
+@media screen and (max-width: 768px) {
+  .collections, .reviews {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .collection-box, .review-box {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .content-box {
+    width: 90%;          /* almost full width */
+    max-width: 100%;     /* don't exceed container */
+  }
+
+  .text-overlay {
+    font-size: 1.5rem;   /* smaller overlay text */
+    padding: 0.5rem 1rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 2rem;  /* smaller headline on tablet/mobile */
+  }
+
+  .nav-right {
+    flex-direction: column;   /* stack icons + search */
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .nav-right i {
+    font-size: 1.2rem;       /* smaller icons */
+  }
+
+  .search-input {
+    width: 100%;              /* take full width on mobile */
+    max-width: 250px;
+  }
+}

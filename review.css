@@ -1,0 +1,216 @@
+/* ========== BASE STYLES ========== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f4ede1, #e1d7c6);
+  margin: 0;
+  padding: 40px 20px;
+  transition: background 0.4s, color 0.4s;
+}
+
+.review-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+.review-card {
+  background: #fff;
+  padding: 35px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 580px;
+  animation: fadeIn 0.6s ease;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* ========== HEADER ========== */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-family: 'Russo One', sans-serif;
+  font-size: 1.7em;
+  color: #2b2b2b;
+}
+
+#themeToggle {
+  background: none;
+  border: none;
+  font-size: 1.4em;
+  color: #c19a6b;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#themeToggle:hover {
+  transform: rotate(20deg);
+}
+
+/* ========== QUESTIONS SECTION ========== */
+.questions-section {
+  margin-top: 25px;
+}
+
+.questions-section h2 {
+  text-align: center;
+  color: #c19a6b;
+  margin-bottom: 15px;
+  font-size: 1.3em;
+}
+
+#questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.question-card {
+  background: #f9f5ef;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, background 0.3s;
+}
+
+.question-card:hover {
+  transform: translateY(-3px);
+}
+
+.question-card h3 {
+  color: #c19a6b;
+  font-size: 1.05em;
+  margin-bottom: 5px;
+}
+
+/* ========== ASK SECTION ========== */
+.ask-section {
+  margin-top: 25px;
+}
+
+.ask-section h2 {
+  text-align: center;
+  color: #c19a6b;
+  margin-bottom: 15px;
+}
+
+#question-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#question-form input,
+#question-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  transition: 0.3s;
+}
+
+#question-form input:focus,
+#question-form textarea:focus {
+  outline: none;
+  border-color: #c19a6b;
+  box-shadow: 0 0 6px rgba(193, 154, 107, 0.4);
+}
+
+#question-form textarea {
+  resize: none;
+  height: 100px;
+}
+
+#question-form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 10px;
+  background: #c19a6b;
+  color: #fff;
+  font-size: 1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#question-form button:hover {
+  background: #a67c52;
+  transform: translateY(-2px);
+}
+
+/* ========== BACK LINK ========== */
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #c19a6b;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* ========== ANIMATION ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== DARK MODE ========== */
+body.dark {
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+  color: #eee;
+}
+
+body.dark .review-card {
+  background: #2d2d2d;
+  color: #eee;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+body.dark h1 {
+  color: #eee;
+}
+
+body.dark .questions-section h2,
+body.dark .ask-section h2 {
+  color: #d4af7a;
+}
+
+body.dark .question-card {
+  background: #3a3a3a;
+}
+
+body.dark .question-card h3 {
+  color: #d4af7a;
+}
+
+body.dark input,
+body.dark textarea {
+  background: #444;
+  border: 1px solid #666;
+  color: #f5f5f5;
+}
+
+body.dark button {
+  background: #d4af7a;
+}
+
+body.dark .back-link {
+  color: #d4af7a;
+}

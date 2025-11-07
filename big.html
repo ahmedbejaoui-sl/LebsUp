@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LebsUp - Brands & Deals</title>
+
+  <link rel="stylesheet" href="big.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Condiment&family=Russo+One&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2debb11fca.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="top-bar">
+    <h1>Lebs<span class="highlight">U</span>p</h1>
+    <nav class="nav-right">
+      <i class="fa-solid fa-house" title="Home" onclick="location.href='acceuil.html'"></i>
+      <i class="fa-solid fa-shirt" title="Wardrobe" onclick="location.href='wardrobe.html'"></i>
+      <i class="fa-solid fa-tags active" title="Brands & Deals"></i>
+      <i class="fa-solid fa-comment" title="Chat"></i>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Featured Brands -->
+    <section class="brands-section fade-in">
+      <div class="section-header">
+        <h2>✨ Featured Fashion Brands</h2>
+        <p>Discover top brands curated for your style.</p>
+      </div>
+      <div id="brand-grid" class="brand-grid"></div>
+    </section>
+
+    <!-- Deals -->
+    <section class="deals-section fade-in">
+      <div class="section-header">
+        <h2>🔥 This Week’s Best Deals</h2>
+        <p>Grab the hottest fashion discounts before they expire.</p>
+      </div>
+      <div id="deals-grid" class="deals-grid"></div>
+    </section>
+  </main>
+
+  <div class="right-bg-text">LEBSUP</div>
+
+  <script>
+    async function loadData() {
+      try {
+        const response = await fetch('deals.json?' + new Date().getTime()); // force reload
+        const data = await response.json();
+
+        // Populate brands
+        const brandGrid = document.getElementById("brand-grid");
+        brandGrid.innerHTML = "";
+        data.brands.forEach(b => {
+          const card = document.createElement("div");
+          card.className = "brand-card";
+          card.innerHTML = `
+            <img src="${b.logo}" alt="${b.name} logo">
+            <h3>${b.name}</h3>
+            <p>${b.desc}</p>
+            <button onclick="window.open('${b.link}', '_blank')">Explore</button>
+          `;
+          brandGrid.appendChild(card);
+        });
+
+        // Populate deals
+        const dealsGrid = document.getElementById("deals-grid");
+        dealsGrid.innerHTML = "";
+        data.deals.forEach(d => {
+          const card = document.createElement("article");
+          card.className = "deal-card";
+          card.innerHTML = `
+            <img src="${d.img}" alt="${d.title}">
+            <div class="deal-info">
+              <h3>${d.title}</h3>
+              <p>${d.desc}</p>
+              <a class="deal-btn" href="${d.link}" target="_blank">View Deal</a>
+            </div>
+          `;
+          dealsGrid.appendChild(card);
+        });
+      } catch (err) {
+        console.error("Error loading data:", err);
+      }
+    }
+
+    // Fade-in observer
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.15 });
+    faders.forEach(el => observer.observe(el));
+
+    loadData();
+  </script>
+</body>
+</html>
+

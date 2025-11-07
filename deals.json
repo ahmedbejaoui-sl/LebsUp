@@ -1,0 +1,23 @@
+{
+  "brands": [
+    { "name": "ZARA", "desc": "Trendy essentials with modern elegance.", "logo": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Zara_Logo.svg", "link": "https://www.zara.com/" },
+    { "name": "Bershka", "desc": "Young, bold, and colorful fashion.", "logo": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Bershka_logo.svg", "link": "https://www.bershka.com/" },
+    { "name": "Pull & Bear", "desc": "Casual, modern styles for daily wear.", "logo": "https://upload.wikimedia.org/wikipedia/commons/0/04/Pull_%26_Bear_logo.svg", "link": "https://www.pullandbear.com/" },
+    { "name": "Yolo Jeans", "desc": "Denim crafted for comfort and style.", "logo": "https://via.placeholder.com/120x60?text=Yolo+Jeans", "link": "https://www.yolojeans.com/" },
+    { "name": "Hamadi Abid", "desc": "Exclusive premium wear for modern trends.", "logo": "https://via.placeholder.com/120x60?text=Hamadi+Abid", "link": "#" },
+    { "name": "LC Waikiki", "desc": "Affordable fashion for everyone.", "logo": "https://upload.wikimedia.org/wikipedia/commons/0/02/LC_Waikiki_logo.svg", "link": "https://www.lcwaikiki.com/" },
+    { "name": "Zen", "desc": "Minimalist and elegant urban clothing.", "logo": "https://via.placeholder.com/120x60?text=Zen", "link": "#" },
+    { "name": "Peak", "desc": "High-quality sportswear for active lifestyles.", "logo": "https://via.placeholder.com/120x60?text=Peak", "link": "#" }
+  ],
+
+  "deals": [
+    { "title": "Summer Styles -50%", "desc": "ZARA — Refresh your wardrobe with bold summer picks.", "img": "https://images.unsplash.com/photo-1585238341986-4c89275d1a2d?q=80&w=1200&auto=format&fit=crop", "link": "https://www.zara.com/" },
+    { "title": "New Season: -30%", "desc": "Bershka — Get the latest youth trends at a discount.", "img": "https://images.unsplash.com/photo-1602810313152-d4b52ff49f0a?q=80&w=1200&auto=format&fit=crop", "link": "https://www.bershka.com/" },
+    { "title": "Casual Sale -25%", "desc": "Pull & Bear — Perfect casual wear for everyday comfort.", "img": "https://images.unsplash.com/photo-1618354694600-f5b1f3423b92?q=80&w=1200&auto=format&fit=crop", "link": "https://www.pullandbear.com/" },
+    { "title": "Denim Special -20%", "desc": "Yolo Jeans — Latest denim fits for all.", "img": "https://images.unsplash.com/photo-1600181957110-2e3e8f1b64a2?q=80&w=1200&auto=format&fit=crop", "link": "https://www.yolojeans.com/" },
+    { "title": "Premium Collection -35%", "desc": "Hamadi Abid — Limited edition premium styles.", "img": "https://via.placeholder.com/600x400?text=Hamadi+Abid+Deal", "link": "#" },
+    { "title": "Affordable Essentials -40%", "desc": "LC Waikiki — Smart casual and trendy wear.", "img": "https://images.unsplash.com/photo-1596464716121-0822ac55f0c6?q=80&w=1200&auto=format&fit=crop", "link": "https://www.lcwaikiki.com/" },
+    { "title": "Minimalist Chic -30%", "desc": "Zen — Effortless style for daily life.", "img": "https://via.placeholder.com/600x400?text=Zen+Deal", "link": "#" },
+    { "title": "Sporty Discount -20%", "desc": "Peak — High-quality sportswear for active lifestyles.", "img": "https://via.placeholder.com/600x400?text=Peak+Deal", "link": "#" }
+  ]
+}

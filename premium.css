@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Russo One', sans-serif;
+  background: linear-gradient(to bottom right, #fefaf5, #f3f0eb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.premium-container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 45px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  padding: 60px;
+  width: 90%;
+  max-width: 750px;
+  animation: fadeIn 1.2s ease;
+}
+
+.title {
+  font-size: 2.6rem;
+  margin-bottom: 25px;
+  color: #333;
+  font-family: 'Condiment', cursive;
+}
+
+.title span {
+  color: #C19A6B;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  text-align: center;
+}
+
+.feature i {
+  font-size: 2.5rem;
+  color: #C19A6B;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  color: #333;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  border: none;
+  padding: 15px 40px;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.go-pro {
+  background: #C19A6B;
+  color: white;
+  box-shadow: 0 4px 15px rgba(193, 154, 107, 0.5);
+}
+
+.go-pro:hover {
+  background: #b58c64;
+  transform: scale(1.05);
+}
+
+.skip {
+  background: transparent;
+  color: #555;
+  border: 2px solid #C19A6B;
+}
+
+.skip:hover {
+  background: #C19A6B;
+  color: white;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}

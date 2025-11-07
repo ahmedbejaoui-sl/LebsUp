@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LebsUp Smart Wardrobe</title>
+  <link rel="stylesheet" href="cloth.css" />
+</head>
+<body>
+  <header class="header">
+    <h1><span class="highlight">LebsUp</span> Smart Wardrobe</h1>
+    <p>Tap a slot to add clothing — from gallery or link.</p>
+  </header>
+
+  <main class="wardrobe-container">
+    <div class="wardrobe-left">
+      <div class="shelf" id="shelf1"></div>
+      <div class="shelf" id="shelf2"></div>
+      <div class="shelf" id="shelf3"></div>
+      <div class="shelf" id="shelf4"></div>
+    </div>
+
+    <div class="wardrobe-right">
+      <h2>🧍‍♀️ Your Outfit Section</h2>
+      <div class="outfit-area" id="outfitArea">
+        <div class="zone" id="zoneHat"><p>Hat</p></div>
+        <div class="zone" id="zoneShirt"><p>Shirt</p></div>
+        <div class="zone" id="zonePants"><p>Pants</p></div>
+        <div class="zone" id="zoneShoes"><p>Shoes</p></div>
+      </div>
+    </div>
+  </main>
+
+  <input type="file" id="fileInput" accept="image/*" hidden />
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Add Clothing</h2>
+      <button id="uploadBtn" class="option">📸 Upload from Gallery</button>
+      <button id="linkBtn" class="option">🔗 Add from URL</button>
+      <div id="urlSection" class="hidden">
+        <input type="url" id="imageURL" placeholder="Enter image link..." />
+        <button id="addURLBtn">Add</button>
+      </div>
+      <button id="closeModal" class="close">Cancel</button>
+    </div>
+  </div>
+
+  <script src="cloth.js"></script>
+</body>
+</html>

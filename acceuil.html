@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LebsUp - Your wardrobe, reimagined</title>
+  <link href="https://fonts.googleapis.com/css2?family=Condiment&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2debb11fca.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+  <!-- Background Decorations -->
+  <div class="decor side-blob left"></div>
+  <div class="decor side-blob right"></div>
+  <div class="decor left-overlay"></div>
+  <div class="decor right-overlay"></div>
+  <div class="decor side-pattern"></div>
+  <div class="decor right-bg-text">Style</div>
+
+  <!-- Header -->
+  <header class="top-bar">
+    <h1>Lebs<span class="highlight">U</span>p</h1>
+    <nav class="nav-right">
+      <p class="review" onclick="location.href='review.html'" style="cursor:pointer;">Review Here</p>
+      <i class="fa-solid fa-house" onclick="location.href='acceuil.html'"></i>
+      <i class="fa-solid fa-user" title="My Account" style="cursor:pointer;" onclick="location.href='account.html'"></i>
+      <i class="fa-brands fa-facebook"></i>
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="search" placeholder="Search" class="search-input">
+
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section id="wardrobe" class="content-box fade-in" onclick="location.href='cloth.html'" style="cursor:pointer;">
+      <img src="word.2.jpg" class="photo" alt="wardrobe">
+      <div class="text-overlay">Your Wardrobe</div>
+    </section>
+
+    <section id="sale" class="content-box fade-in" onclick="location.href='big.html'" style="cursor:pointer;">
+      <img src="sale.2.jpg" class="photo" alt="sale">
+      <div class="text-overlay">Big Deals Today!</div>
+    </section>
+
+    <section id="donate" class="content-box fade-in" onclick="location.href='donate.html'" style="cursor:pointer;">
+      <img src="donate.2.jpg" class="photo" alt="donate">
+      <div class="text-overlay">Donate Here</div>
+    </section>
+
+    <section class="collections fade-in">
+      <div class="collection-box float">
+        <img src="collection1.jpg" alt="New Arrivals">
+        <div class="collection-text">New Arrivals</div>
+      </div>
+      <div class="collection-box float">
+        <img src="collection2.jpg" alt="Best Sellers">
+        <div class="collection-text">Best Sellers</div>
+      </div>
+      <div class="collection-box float">
+        <img src="collection3.jpg" alt="Trending">
+        <div class="collection-text">Trending</div>
+      </div>
+    </section>
+
+    <section class="reviews fade-in">
+      <div class="review-box float">“Amazing service! My wardrobe feels brand new.”</div>
+      <div class="review-box float">“I love the outfit suggestions. Always on point!”</div>
+    </section>
+
+    <section class="cta fade-in">
+      <p>Sign up today to get exclusive style recommendations!</p>
+      <button onclick="location.href='login.html'" class="side-button">Sign Up</button>
+    </section>
+  </main>
+
+  <!-- Floating Icons -->
+  <i class="fa-solid fa-shirt side-icon" style="top:250px; left:20px;"></i>
+  <i class="fa-solid fa-bag-shopping side-icon" style="top:400px; left:50px;"></i>
+  <i class="fa-solid fa-socks side-icon" style="top:550px; left:30px;"></i>
+
+  <!-- Popup Slideshow -->
+  <div id="introPopup" class="popup hidden">
+    <div class="popup-content">
+      <div class="slides">
+        <div class="slide active">
+          <h2>👗 Welcome to LebsUp</h2>
+          <p>Where technology meets fashion. Redefine your wardrobe with a touch of smart style.</p>
+        </div>
+        <div class="slide">
+          <h2>💡 Smart Outfit Suggestions</h2>
+          <p>Let AI and creativity blend to match perfect combinations for your mood and day.</p>
+        </div>
+        <div class="slide">
+          <h2>🌍 Conscious Fashion</h2>
+          <p>Shop smart, donate sustainably, and give your clothes a second life.</p>
+        </div>
+        <div class="slide">
+          <h2>🚀 Let’s Get Started</h2>
+          <p>Step into a new way of managing, styling, and enjoying your wardrobe.</p>
+        </div>
+      </div>
+
+      <div class="popup-buttons">
+        <button id="prevBtn">← Back</button>
+        <button id="nextBtn">Next →</button>
+        <button id="skipBtn">Skip ✖</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Fade-in elements on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const options = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // Popup slideshow
+    const popup = document.getElementById('introPopup');
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach(s => s.classList.remove('active'));
+      slides[index].classList.add('active');
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      currentSlide++;
+      if (currentSlide < slides.length) {
+        showSlide(currentSlide);
+      } else {
+        popup.classList.add('hidden');
+        localStorage.setItem("introSeen", "true");
+      }
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      currentSlide = Math.max(0, currentSlide - 1);
+      showSlide(currentSlide);
+    });
+
+    document.getElementById('skipBtn').addEventListener('click', () => {
+      popup.classList.add('hidden');
+      localStorage.setItem("introSeen", "true");
+    });
+
+    // Show popup only once
+    window.addEventListener('load', () => {
+      const introSeen = localStorage.getItem("introSeen");
+      if (!introSeen) {
+        setTimeout(() => popup.classList.remove('hidden'), 2000);
+      }
+    });
+  </script>
+
+</body>
+</html>

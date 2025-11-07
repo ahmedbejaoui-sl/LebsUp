@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LebsUp - Reviews & Questions</title>
+  <link rel="stylesheet" href="review.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Russo+One&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="review-container">
+    <div class="review-card">
+      <div class="top-bar">
+        <h1>LebsUp Community</h1>
+        <button id="themeToggle" title="Toggle theme">🌙</button>
+      </div>
+
+      <section class="questions-section">
+        <h2>Popular Questions</h2>
+        <div id="questions-list">
+          <div class="question-card">
+            <h3>How can I add a new outfit?</h3>
+            <p>Go to your wardrobe page and click “Add Item” — you can scan it or enter manually!</p>
+          </div>
+
+          <div class="question-card">
+            <h3>Is there a dark mode option?</h3>
+            <p>Yes! You can switch between light and dark mode using the moon icon above.</p>
+          </div>
+
+          <div class="question-card">
+            <h3>Can I share my outfits with friends?</h3>
+            <p>Absolutely — go to your wardrobe, tap “Share,” and send them your outfit link.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="ask-section">
+        <h2>Ask a Question</h2>
+        <form id="question-form">
+          <input type="text" id="username" placeholder="Your name (optional)" />
+          <textarea id="question" placeholder="Write your question..." required></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+      <a href="acceuil.html" class="back-link">← Back to Home</a>
+    </div>
+  </div>
+
+  <script src="review.js"></script>
+</body>
+</html>

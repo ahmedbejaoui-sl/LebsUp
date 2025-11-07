@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LebsUp - Smart Wardrobe</title>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="wardrobe.css">
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Condiment&family=Russo+One&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/2debb11fca.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="top-bar">
+    <h1>Lebs<span class="highlight">U</span>p</h1>
+    <nav class="nav-right">
+      <i class="fa-solid fa-house" onclick="location.href='acceuil.html'"></i>
+      <i class="fa-solid fa-shirt"></i>
+      <i class="fa-solid fa-bag-shopping"></i>
+      <i class="fa-solid fa-comment"></i>
+      <input type="text" placeholder="Search" class="search-input">
+    </nav>
+  </header>
+
+  <!-- Wardrobe Section -->
+  <section class="wardrobe fade-in">
+    <div class="section-header">
+      <h2>Your Luxury Wardrobe</h2>
+      <p>Manage your collection and get smart outfit ideas.</p>
+    </div>
+    <div class="upload-area">
+      <button id="organize-btn" class="side-button">
+        <i class="fa-solid fa-layer-group"></i> Organize Clothes
+      </button>
+    </div>
+  </section>
+
+  <!-- Chat Section -->
+  <section class="chat fade-in">
+    <h2>Chat with <span class="highlight">LebsUp.AI</span></h2>
+    <div id="chat-box" class="chat-box">
+      <div class="message bot">👗 Hi! I'm LebsUp.AI — I can help you design stunning outfits and manage your wardrobe!</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Ask for outfit ideas...">
+      <button id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </section>
+
+  <div class="right-bg-text">LEBSUP</div>
+
+  <script>
+    // ===== FADE-IN ANIMATION =====
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    });
+    faders.forEach(el => observer.observe(el));
+
+    // ===== ORGANIZE BUTTON =====
+    const organizeBtn = document.getElementById('organize-btn');
+    organizeBtn.onclick = () => {
+      window.location.href = "cloth.html";
+    };
+
+    // ===== CHATBOT SYSTEM (Chatbase inside custom UI) =====
+    const chatBox = document.getElementById('chat-box');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+
+    function addMessage(text, sender){
+      const msg = document.createElement('div');
+      msg.classList.add('message', sender);
+      msg.innerHTML = text;
+      chatBox.appendChild(msg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    sendBtn.onclick = async () => {
+      const text = userInput.value.trim();
+      if(!text) return;
+      addMessage(text, "user");
+      userInput.value = "";
+      await botReply(text);
+    };
+
+    userInput.addEventListener("keypress", e => {
+      if (e.key === "Enter") sendBtn.click();
+    });
+
+    async function botReply(text){
+      // temporary "typing..." message
+      const typingMsg = document.createElement('div');
+      typingMsg.classList.add('message', 'bot');
+      typingMsg.innerHTML = '<span style="opacity:0.5">Typing...</span>';
+      chatBox.appendChild(typingMsg);
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      try {
+        const response = await fetch("https://www.chatbase.co/api/v1/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            // 🔹 Replace with your Chatbase API key
+            "Authorization": "8a81e674-c929-45f2-b371-459ef0d4b8a4"
+          },
+          body: JSON.stringify({
+            messages: [{ role: "user", content: text }],
+            // 🔹 Replace with your own Chatbase chatbot ID
+            chatbotId: "8a81e674-c929-45f2-b371-459ef0d4b8a4"
+          })
+        });
+
+        const data = await response.json();
+        typingMsg.remove();
+
+        if (data && data.text) {
+          addMessage(data.text, "bot");
+        } else {
+          addMessage("🤖 Sorry, I couldn’t get a proper response.", "bot");
+        }
+
+      } catch (error) {
+        console.error(error);
+        typingMsg.remove();
+        addMessage("⚠️ Connection error with AI.", "bot");
+      }
+    }
+
+    // INITIAL GREETING
+    setTimeout(() => addMessage("👋 Hi! I'm <b>LebsUp.AI</b> — Let's style your wardrobe together!", "bot"), 500);
+  </script>
+<script>
+(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="LS2KVmzHWVN2kgswZxhPe";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+
+</body>
+</html>

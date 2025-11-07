@@ -1,0 +1,219 @@
+:root {
+  --primary-bg: linear-gradient(to bottom, #E0E0E0, #FFFFFF, #F5F5F0);
+  --headline-color: #333333;
+  --highlight-color: #C19A6B;
+  --icon-color: #7A7A7A;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--primary-bg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Header / Sticky */
+.top-bar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--primary-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Logo */
+h1 {
+  font-family: "Condiment", cursive;
+  font-size: 2.5rem;
+  color: var(--headline-color);
+  margin: 0;
+}
+
+.highlight {
+  color: var(--highlight-color);
+  font-weight: bold;
+}
+
+/* Nav icons */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-right i {
+  font-size: 1.4rem;
+  color: var(--icon-color);
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-right i:hover {
+  color: var(--highlight-color);
+  transform: scale(1.1);
+}
+
+/* Guide Text */
+.guide-text {
+  text-align: center;
+  margin: 2.5rem auto 1.5rem;
+  max-width: 700px;
+  padding: 0 1rem;
+}
+
+.guide-title {
+  font-family: "Russo One", sans-serif;
+  font-size: 2rem;
+  color: var(--headline-color);
+  margin-bottom: 0.5rem;
+}
+
+.guide-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Background Decorations */
+.decor {
+  position: absolute;
+  z-index: 0;
+}
+
+.side-blob.left {
+  width: 200px;
+  height: 200px;
+  top: 100px;
+  left: 50px;
+  border-radius: 50%;
+  background: rgba(200,200,200,0.15);
+}
+
+.side-blob.right {
+  width: 250px;
+  height: 250px;
+  bottom: 150px;
+  right: 50px;
+  border-radius: 50%;
+  background: rgba(200,200,200,0.15);
+}
+
+.left-overlay {
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(to right, rgba(220,220,220,0.3), transparent);
+}
+
+.right-overlay {
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(to left, rgba(220,220,220,0.3), transparent);
+}
+
+.side-pattern {
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(rgba(200,200,200,0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.glow.left, .glow.right {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,200,200,0.08) 0%, transparent 70%);
+}
+
+.glow.left {
+  top: 200px;
+  left: 30px;
+}
+
+.glow.right {
+  bottom: 100px;
+  right: 30px;
+}
+
+/* Collections Grid - Full Page Style */
+.collections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  padding: 4rem 6rem;
+}
+
+.collection-box {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 400px;
+}
+
+.collection-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.collection-box:hover img {
+  transform: scale(1.05);
+}
+
+.collection-text {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+  z-index: 2;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .collections {
+    padding: 3rem 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .collections {
+    padding: 2rem 2rem;
+    gap: 2rem;
+  }
+  .collection-box {
+    height: 300px;
+  }
+  .collection-text {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collections {
+    padding: 1rem 1rem;
+    gap: 1rem;
+  }
+  .collection-box {
+    height: 250px;
+  }
+  .collection-text {
+    font-size: 1.2rem;
+  }
+}
